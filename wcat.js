@@ -14,6 +14,7 @@ for(let i=0;i<inputArr.length;i++){
         path.push(inputArr[i]);
     }
 }
+console.log(path);
 for(let i=0;i<path.length;i++){
     let ans= fs.existsSync(path[i]);
       if(ans==false){
@@ -29,37 +30,21 @@ for(let i=0;i<path.length;i++){
       }    
       content = Allcontent.split("\r\n");
 
- if(inputArr.includes("-n")&&inputArr.includes("-b")&&inputArr.includes("-s") ){
+if(inputArr.includes("-n")&&inputArr.includes("-b")&&inputArr.includes("-s") ){
     
      if(inputArr.indexOf("-n")<inputArr.indexOf("-b")){
         let sbarr =[];
-        sbarr =sobj.fxn(path,content);
-        let count=1;
-        for(let i=0; i<sbarr.length;i++){
-           
-               sbarr[i]=(count +  " " + sbarr[i] );
-               count++;
-               console.log(sbarr[i]);
-               
-           
-       }
+     sbarr =sobj.fxn(path,content);
+     nbarr = nobj.fxn(path,sbarr);
+     console.log(nbarr);
+    
      }
      else {
         let sbarr =[];
-        sbarr =sobj.fxn(path,content);
-        let count=1;
-        for(let i=0; i<sbarr.length;i++){
-           if(sbarr[i] != ""){
-               sbarr[i]=(count +  " " + sbarr[i] );
-               count++;
-               console.log(sbarr[i]);
-               
-           }
-           else{
-               sbarr[i]= (sbarr[i]);
-               console.log(sbarr[i]);
-           } 
-       }
+     sbarr =sobj.fxn(path,content);
+     barr = bobj.fxn(path,sbarr);
+     console.log(barr);
+    
      }
     
 }
@@ -67,19 +52,8 @@ else if(inputArr.includes("-s")&&inputArr.includes("-b") ){
     
      let sbarr =[];
      sbarr =sobj.fxn(path,content);
-     let count=1;
-     for(let i=0; i<sbarr.length;i++){
-        if(sbarr[i] != ""){
-            sbarr[i]=(count +  " " + sbarr[i] );
-            count++;
-            console.log(sbarr[i]);
-            
-        }
-        else{
-            sbarr[i]= (sbarr[i]);
-            console.log(sbarr[i]);
-        } 
-    }
+     barr = bobj.fxn(path,sbarr);
+     console.log(barr);
     
      
 } 
@@ -87,25 +61,19 @@ else if(inputArr.includes("-s")&&inputArr.includes("-n") ){
     
      let sbarr =[];
      sbarr =sobj.fxn(path,content);
-     let count=1;
-     for(let i=0; i<sbarr.length;i++){
-        
-            sbarr[i]=(count +  " " + sbarr[i] );
-            count++;
-            console.log(sbarr[i]);
-            
-        
-    }
+     nbarr = nobj.fxn(path,sbarr);
+     console.log(nbarr);
+    
     
      
 }
 else if(inputArr.includes("-n")&&inputArr.includes("-b") ){
     
-     if(inputArr.indexOf("-n")>inputArr.indexOf("-b")){
-        nobj.fxn(path,content);
+     if(inputArr.indexOf("-n")<inputArr.indexOf("-b")){
+        console.log(nobj.fxn(path,content));
      }
      else {
-        bobj.fxn(path,content);
+        console.log(bobj.fxn(path,content));
      }
     
 }
@@ -121,7 +89,7 @@ else if(inputArr[0]== "-n"){
 }
 else if(inputArr[0] == "-b"){
     console.log(bobj.fxn(path,content));
- }
+}
 else {
      for(let i=0; i<path.length;i++){
 
